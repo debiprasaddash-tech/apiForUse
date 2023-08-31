@@ -1,21 +1,19 @@
 const { default: axios } = require("axios");
-const { json } = require("body-parser");
-const { request } = require("express");
 const jwt = require("jsonwebtoken");
 
 const userData = [
-  { username: "admin", password: "admin@123" },
-  { username: "manager", password: "manager@123" },
-  { username: "teacher", password: "teacher@123" },
+  { email: "admin", password: "admin@123" },
+  { email: "manager", password: "manager@123" },
+  { email: "teacher", password: "teacher@123" },
 ];
 
 exports.login = async (req, res) => {
   try {
-    let usernameCheck = await userData.find(
-      (e) => e.username == req.body.username
+    let emailCheck = await userData.find(
+      (e) => e.email == req.body.email
     );
-    if (!usernameCheck) {
-      return res.status(400).json("Username not found");
+    if (!emailCheck) {
+      return res.status(400).json("email not found");
     }
     let passwordCheck = await userData.find(
       (e) => e.password == req.body.password
@@ -24,7 +22,7 @@ exports.login = async (req, res) => {
       console.log("first");
       return res.status(400).json("password not match ! Try again");
     }
-    docs = await userData.find((e) => e.username == req.body.username);
+    docs = await userData.find((e) => e.email == req.body.email);
     var token = jwt.sign(docs, "MyNamePrasant");
     res.json(token);
   } catch (error) {
