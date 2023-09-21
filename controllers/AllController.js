@@ -46,9 +46,3 @@ exports.search = async (req, res) => {
     res.status(500).json(error.message);
   }
 };
-
-// api example
-// get request
-// http://localhost:3000/api/search?q=girls
-// post request
-// http://localhost:3000/api/login
