@@ -7,6 +7,13 @@ const userData = [
   { email: "teacher", password: "teacher@123" },
 ];
 
+exports.register=async(req,res)=>{
+  try {
+    return res.json("hello")
+  } catch (error) {
+    
+  }
+}
 exports.login = async (req, res) => {
   try {
     let emailCheck = await userData.find(
