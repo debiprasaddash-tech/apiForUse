@@ -41,7 +41,7 @@ const PORT = process.env.PORT || 8008;
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect("mongodb://127.0.0.1:27017/mcq-app", {
+mongoose.connect("mongodb+srv://Devil:Devil@sharedfirst.klp4zfa.mongodb.net/", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
