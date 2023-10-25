@@ -25,7 +25,6 @@
 // app.post("/api/login", allController.login);
 // app.get("/api/search", allController.search);
 
-
 // app.listen(port, () => console.log(`http://localhost:${port}`));
 
 // app.js
@@ -33,7 +32,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const mcqRoutes = require("./routes/mcqRoutes");
-
+require("dotenv").config();
+const MONGO_URL = process.env.MONGO_URL;
 const app = express();
 const PORT = process.env.PORT || 8008;
 
@@ -41,7 +41,7 @@ const PORT = process.env.PORT || 8008;
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://Devil:Devil@sharedfirst.klp4zfa.mongodb.net/", {
+mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
